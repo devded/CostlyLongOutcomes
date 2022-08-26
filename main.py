@@ -19,13 +19,7 @@ country_list = soup.find_all('div', attrs={'class': 'country-container'})
 list = soup.find_all('div', attrs={'class': 'row-ranking'})
 
 n=2
-rank_list = []
-for x in list:
-  #print(x.div[1])
-  #print(x.select("div:nth-child("+str(n)+")")[0])
-  rank_list.append(x.select("div:nth-child("+str(n)+")")[0])
-
-
+rank_list = [x.select(f"div:nth-child({n})")[0] for x in list]
 for rank_value in rank_list:
   print(rank_value)
 
