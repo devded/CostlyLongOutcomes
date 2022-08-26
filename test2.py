@@ -44,18 +44,13 @@ raw_prices = soup.find_all('span', attrs={'class': 'price'})
 
 clean_names = []
 clean_urls = []
-clean_prices = []
-
 for name in raw_names:
     # print(name.a.text.strip())
     # print(name.a.attrs['href'])
     clean_names.append(name.a.text.strip())
     clean_urls.append(name.a.attrs['href'])
 
-for price in raw_prices:
-    # print(price.text.strip())
-    clean_prices.append(price.text.strip())
-
+clean_prices = [price.text.strip() for price in raw_prices]
 data_list = []
 
 for name, price, url in zip(clean_names, clean_prices, clean_urls):
